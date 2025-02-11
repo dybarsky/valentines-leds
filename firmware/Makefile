@@ -7,6 +7,7 @@ OBJ += $(OUT)/main.o
 OBJ += $(OUT)/timer.o
 OBJ += $(OUT)/shift.o
 OBJ += $(OUT)/button.o
+OBJ += $(OUT)/pattern.o
 
 CC = msp430-gcc
 CFLAGS = -g -mmcu=msp430g2553
@@ -50,6 +51,10 @@ $(OUT)/button.o: $(SOURCES)/button.c $(HEADERS)/button.h
 $(OUT)/timer.o: $(SOURCES)/timer.c $(HEADERS)/timer.h
 	@echo "Compile $<";\
 	$(CC) $(CFLAGS) $(INCFLAGS) -c $(SOURCES)/timer.c -o $(OUT)/timer.o
+
+$(OUT)/pattern.o: $(SOURCES)/pattern.c $(HEADERS)/pattern.h
+	@echo "Compile $<";\
+	$(CC) $(CFLAGS) $(INCFLAGS) -c $(SOURCES)/pattern.c -o $(OUT)/pattern.o
 	
 .SILENT: clean build-dir
 .PHONY: clean build-dir flash build

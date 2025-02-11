@@ -2,6 +2,7 @@
 #include "shift.h"
 #include "timer.h"
 #include "button.h"
+#include "pattern.h"
 
 void configure() {
 	// turn off watchdog
@@ -14,45 +15,38 @@ void configure() {
 	P2OUT = 0;
 }
 
+unsigned char *array;
+unsigned char index;
+
 int main(void) {
 	// config peripherals
 	configure();
 	configure_timer();
 	configure_shift();
 	configure_button();
-
-	// test
-	//unsigned int data = 0b00000101;
-	//shift_a(data);
-	//shift_b(data);
-
-	// reset state
+	// init state
 	shift_a(0);
 	shift_b(0);
-
+	index = 0;
+	array = next_pattern();
 	start_timer();
-	
 	// low power mode + enable interruptions
 	_BIS_SR(LPM0_bits + GIE);
 }
 
 void on_button_callback() {
-	
+	index = 0;
+	array = next_pattern();
 }
 
 void on_timer_callback() {
-	program_1();
-}
-
-int count = 0;
-void program_1() {
-	if (count > 8) {
-		count = 0;
+	if (index >= SIZE) {
+		index = 0;
 	}
-	unsigned int byte = 128;
-	unsigned int data = byte >> count;
-	//unsigned int data = ~(~byte >> count);
-	shift_a(data);
-	shift_b(data);
-	count ++;
+	unsigned char *row = array + (index * 2);
+	unsigned char left = row[0];
+	unsigned char right = row[1];
+	shift_b(left);
+	shift_a(right);
+	index ++;
 }

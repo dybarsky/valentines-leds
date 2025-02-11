@@ -1,6 +1,6 @@
 #include "pattern.h"
 
-#define AMOUNT 3
+#define AMOUNT 4
 
 unsigned char running[SIZE][2] = {
 	{ 0b00000001, 0b00000000 },
@@ -59,14 +59,34 @@ unsigned char blinking[SIZE][2] = {
 	{ 0b00000000, 0b11111111 },		
 };
 
+unsigned char alternation[SIZE][2] = {
+	{ 0b01010101, 0b01010101 },
+	{ 0b01010101, 0b01010101 },
+	{ 0b10101010, 0b10101010 },
+	{ 0b10101010, 0b10101010 },
+	{ 0b01010101, 0b01010101 },
+	{ 0b01010101, 0b01010101 },
+	{ 0b10101010, 0b10101010 },
+	{ 0b10101010, 0b10101010 },
+	{ 0b01010101, 0b01010101 },
+	{ 0b01010101, 0b01010101 },
+	{ 0b10101010, 0b10101010 },
+	{ 0b10101010, 0b10101010 },
+	{ 0b01010101, 0b01010101 },
+	{ 0b01010101, 0b01010101 },
+	{ 0b10101010, 0b10101010 },
+	{ 0b10101010, 0b10101010 },
+};
+
 unsigned char *patterns[AMOUNT] = {
 	*running,
 	*filling,
 	*blinking,
+	*alternation,
 };
 
 
-char current = 0;
+unsigned char current = 0;
 unsigned char * next_pattern() {
 	if (current >= AMOUNT) {
 		current = 0;

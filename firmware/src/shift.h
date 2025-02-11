@@ -4,5 +4,5 @@ Turns on and off leds.
 */
 
 void configure_shift();
-void shift_a(unsigned int data);
-void shift_b(unsigned int data);
+void shift_a(unsigned char data);
+void shift_b(unsigned char data);

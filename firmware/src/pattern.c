@@ -1,8 +1,9 @@
 #include "pattern.h"
 
-#define AMOUNT 4
+#define AMOUNT 5
 #define SIZE_RUNNING 16
 #define SIZE_FILLING 18
+#define SIZE_BEATING 12
 #define SIZE_BLINKING 4
 #define SIZE_ALTERNATING 4
 
@@ -60,9 +61,25 @@ unsigned char alternating[SIZE_ALTERNATING][2] = {
 	{ 0b10101010, 0b10101010 },
 };
 
+unsigned char beating[SIZE_BEATING][2] = {
+	{ 0b00000000, 0b00000000 },
+	{ 0b00000000, 0b00000000 },
+	{ 0b11111111, 0b11111111 },
+	{ 0b11111111, 0b11111111 },
+	{ 0b00000000, 0b00000000 },
+	{ 0b00000000, 0b00000000 },
+	{ 0b11111111, 0b11111111 },
+	{ 0b11111111, 0b11111111 },
+	{ 0b00000000, 0b00000000 },
+	{ 0b00000000, 0b00000000 },
+	{ 0b00000000, 0b00000000 },
+	{ 0b00000000, 0b00000000 },
+};
+
 unsigned char sizes[AMOUNT] = {
 	SIZE_RUNNING,
 	SIZE_FILLING,
+	SIZE_BEATING,
 	SIZE_BLINKING,
 	SIZE_ALTERNATING,
 };
@@ -70,6 +87,7 @@ unsigned char sizes[AMOUNT] = {
 unsigned char *patterns[AMOUNT] = {
 	*running,
 	*filling,
+	*beating,
 	*blinking,
 	*alternating,
 };

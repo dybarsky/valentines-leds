@@ -17,6 +17,7 @@ void configure() {
 
 unsigned char *array;
 unsigned char index;
+unsigned char size;
 
 int main(void) {
 	// config peripherals
@@ -24,11 +25,13 @@ int main(void) {
 	configure_timer();
 	configure_shift();
 	configure_button();
-	// init state
+	// turn off leds
 	shift_a(0);
 	shift_b(0);
+	// init state
 	index = 0;
 	array = next_pattern();
+	size = pattern_size();
 	start_timer();
 	// low power mode + enable interruptions
 	_BIS_SR(LPM0_bits + GIE);
@@ -37,10 +40,11 @@ int main(void) {
 void on_button_callback() {
 	index = 0;
 	array = next_pattern();
+	size = pattern_size();
 }
 
 void on_timer_callback() {
-	if (index >= SIZE) {
+	if (index >= size) {
 		index = 0;
 	}
 	unsigned char *row = array + (index * 2);

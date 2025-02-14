@@ -1,7 +1,7 @@
 ## HEART LEDs Valentine's day gift.
 An Open Source & Open Hardware project.  
 
-_Demo gif_ 👇  
+_Demo gif (loads a bit long)_ 👇  
 <img src="media/demo.gif" />
 
 ## Parts

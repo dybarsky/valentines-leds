@@ -3495,6 +3495,9 @@
     )
 
     (stroke (width 0.1) (type solid)) (fill none) (layer "Edge.Cuts") (tstamp 02ac40a7-af5c-463d-b927-5224867e213c))
+  (gr_text "Heart V1.0\n@dybarsky" (at 152.4 125.73 45) (layer "F.SilkS") (tstamp 8268a6b7-4554-4759-99e7-edcd8e27c663)
+    (effects (font (size 1.3 1.3) (thickness 0.1625)) (justify left bottom))
+  )
   (gr_text "POWER" (at 166.37 110.49) (layer "F.SilkS") (tstamp d2430398-b777-41d9-95d1-8fe56b842874)
     (effects (font (size 1.5 1.5) (thickness 0.3)) (justify left bottom))
   )

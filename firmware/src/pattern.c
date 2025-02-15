@@ -9,6 +9,7 @@
 #define SIZE_ALTERNATING 4
 
 unsigned char running[SIZE_RUNNING][2] = {
+	{ 0b00000000, 0b10000000 },
 	{ 0b00000001, 0b00000000 },
 	{ 0b00000010, 0b00000000 },
 	{ 0b00000100, 0b00000000 },
@@ -24,7 +25,6 @@ unsigned char running[SIZE_RUNNING][2] = {
 	{ 0b00000000, 0b00010000 },
 	{ 0b00000000, 0b00100000 },
 	{ 0b00000000, 0b01000000 },
-	{ 0b00000000, 0b10000000 },	
 };
 
 unsigned char filling[SIZE_FILLING][2] = {
@@ -92,34 +92,20 @@ unsigned char cheasing[SIZE_CHEASING][2] = {
 	{ 0b00000000, 0b10000000 },
 };
 
-unsigned char sizes[AMOUNT] = {
-	SIZE_RUNNING,
-	SIZE_FILLING,
-	SIZE_BEATING,
-	SIZE_CHEASING,
-	SIZE_BLINKING,
-	SIZE_ALTERNATING,
+struct pattern data[AMOUNT] = {
+	{ SIZE_RUNNING, *running },
+	{ SIZE_FILLING, *filling },
+	{ SIZE_BEATING, *beating },
+	{ SIZE_CHEASING, *cheasing },
+	{ SIZE_BLINKING, *blinking },
+	{ SIZE_ALTERNATING, *alternating }
 };
 
-unsigned char *patterns[AMOUNT] = {
-	*running,
-	*filling,
-	*beating,
-	*cheasing,
-	*blinking,
-	*alternating,
-};
+static unsigned char current = 0;
 
-unsigned char current = -1;
-
-unsigned char pattern_size() {
-	return sizes[current];
-}
-
-unsigned char * next_pattern() {
-	current ++;
+struct pattern next_pattern() {
 	if (current >= AMOUNT) {
 		current = 0;
 	}
-	return patterns[current];
+	return data[current++];
 }

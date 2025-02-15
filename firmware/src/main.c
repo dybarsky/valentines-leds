@@ -15,9 +15,8 @@ void configure() {
 	P2OUT = 0;
 }
 
-unsigned char *array;
-unsigned char index;
-unsigned char size;
+struct pattern current;
+static unsigned char index;
 
 int main(void) {
 	// config peripherals
@@ -30,8 +29,7 @@ int main(void) {
 	shift_b(0);
 	// init state
 	index = 0;
-	array = next_pattern();
-	size = pattern_size();
+	current = next_pattern();
 	start_timer();
 	// low power mode + enable interruptions
 	_BIS_SR(LPM0_bits + GIE);
@@ -39,15 +37,14 @@ int main(void) {
 
 void on_button_callback() {
 	index = 0;
-	array = next_pattern();
-	size = pattern_size();
+	current = next_pattern();
 }
 
 void on_timer_callback() {
-	if (index >= size) {
+	if (index >= current.size) {
 		index = 0;
 	}
-	unsigned char *row = array + (index * 2);
+	unsigned char *row = current.array + (index * 2);
 	unsigned char left = row[0];
 	unsigned char right = row[1];
 	shift_b(left);

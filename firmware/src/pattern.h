@@ -2,5 +2,9 @@
 Patterns for LEDs
 */
 
-unsigned char * next_pattern();
-unsigned char pattern_size();
+struct pattern {
+	unsigned char size;
+	unsigned char * array;
+};
+
+struct pattern next_pattern();

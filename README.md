@@ -38,4 +38,4 @@ Timer intrruptions are configured to be called every 0.1 second. IC goes over ar
 https://www.youtube.com/watch?v=liG8lNvPkbY
 
 ## Instrucitons 
-Coming soon...
+https://www.instructables.com/Electronic-Heart-Valentines-Day-Gift/

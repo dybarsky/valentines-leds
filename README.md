@@ -29,7 +29,7 @@ With highlighted nets 👇
 <img width="800" src="media/nets.png" />
 
 ## Firmware
-Firmware for this project was written in vanilla `C`, operating with IC registers directly (without platformio or any other ports of arduino libraries). It requires some deeper knowledge of MSP430G2553 datasheet and hardware communication protocols, but drastically reduces binary size. It's only 14 KB!  
+Firmware for this project was written in pure `C`, operating with IC registers directly (without platformio or any other ports of arduino libraries). It requires some deeper knowledge of MSP430G2553 datasheet and hardware communication protocols, but drastically reduces binary size. It's only 14 KB!  
 
 There are 6 different patterns of LEDs blinking. They are store in 2 dimensional arrays of bytes.  
 Timer intrruptions are configured to be called every 0.1 second. IC goes over array and sends data to 8-bit shift register. Communication between the microcontroller and 8-bit shift registers is done via `SPI` protocol. When IC is not busy, it goes to low power mode.

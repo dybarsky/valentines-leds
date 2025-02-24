@@ -15,7 +15,7 @@ void configure() {
 	P2OUT = 0;
 }
 
-struct pattern current;
+pattern current;
 static unsigned char index;
 
 int main(void) {

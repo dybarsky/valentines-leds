@@ -92,7 +92,7 @@ unsigned char cheasing[SIZE_CHEASING][2] = {
 	{ 0b00000000, 0b10000000 },
 };
 
-struct pattern data[AMOUNT] = {
+pattern data[AMOUNT] = {
 	{ SIZE_RUNNING, *running },
 	{ SIZE_FILLING, *filling },
 	{ SIZE_BEATING, *beating },
@@ -103,7 +103,7 @@ struct pattern data[AMOUNT] = {
 
 static unsigned char current = 0;
 
-struct pattern next_pattern() {
+pattern next_pattern() {
 	if (current >= AMOUNT) {
 		current = 0;
 	}

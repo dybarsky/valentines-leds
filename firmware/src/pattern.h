@@ -2,9 +2,14 @@
 Patterns for LEDs
 */
 
-struct pattern {
+#ifndef HEADER_PATTERN
+#define HEADER_PATTERN
+
+typedef struct {
 	unsigned char size;
 	unsigned char * array;
-};
+} pattern;
 
-struct pattern next_pattern();
+pattern next_pattern();
+
+#endif // HEADER_PATTERN
